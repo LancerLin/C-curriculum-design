@@ -9,10 +9,6 @@ Person::Person(char * inputname, int inputid, int inputpassword)
 	IsUsed = true;
 }
 
-Person::Person()
-{
-}
-
 void Person::show()
 {
 	std::cout << "ÐÕÃû£º" << getname() << std::endl;

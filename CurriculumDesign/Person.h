@@ -4,7 +4,7 @@
 class Person{
 	char name[20];
 	int id; //长度决定等级
-	int password;
+	double password;
 	bool IsUsed;
 public:
 	Person(char *inputname, int inputid, int inputpassword);

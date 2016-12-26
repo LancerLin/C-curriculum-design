@@ -146,14 +146,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Manager.h" />
     <ClInclude Include="Member.h" />
     <ClInclude Include="Operator.h" />
     <ClInclude Include="Person.h" />
+    <ClInclude Include="Super.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Manager.cpp" />
     <ClCompile Include="Member.cpp" />
+    <ClCompile Include="Operator.cpp" />
     <ClCompile Include="Person.cpp" />
+    <ClCompile Include="Super.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

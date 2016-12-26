@@ -24,6 +24,12 @@
     <ClInclude Include="Operator.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="Manager.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Super.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Person.cpp">
@@ -33,6 +39,15 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Manager.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Operator.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Super.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

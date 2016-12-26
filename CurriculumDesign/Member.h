@@ -6,6 +6,8 @@
 class Member:public Person {
 	int credit; //»ı·Ö
 public:
-	Member();
-
+	Member(char *inputname, int inputid, int inputpassword);
+	int getcredit() { return credit; }
+	void show();
+	friend class Operator;
 };
