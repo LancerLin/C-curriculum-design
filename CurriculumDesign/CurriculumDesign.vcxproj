@@ -146,7 +146,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="G:\bei\FileSys.h" />
+    <ClInclude Include="FileSys.h" />
     <ClInclude Include="Manager.h" />
     <ClInclude Include="Member.h" />
     <ClInclude Include="Operator.h" />
@@ -154,7 +154,7 @@
     <ClInclude Include="Super.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="G:\bei\FileSys.cpp" />
+    <ClCompile Include="FileSys.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Manager.cpp" />
     <ClCompile Include="Member.cpp" />
