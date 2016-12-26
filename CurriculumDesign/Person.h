@@ -1,16 +1,17 @@
 #pragma once
-#define Person_h
 //基类 Person.h
 //不能设置姓名 不能查看密码
 class Person{
 	char name[20];
-	int id;
+	int id; //长度决定等级
 	int password;
+	bool IsUsed;
 public:
-	Person(char *name, int id, int password);
+	Person(char *inputname, int inputid, int inputpassword);
 	Person();
 	int getid() { return id; }
 	char *getname() { return name; }
-	void setpassword(int x) { password = x; }
+	//friend void setpassword(int x) { password = x; }
 	void show();//显示姓名和id
+	friend class Operator;
 };

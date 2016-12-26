@@ -18,9 +18,21 @@
     <ClInclude Include="Person.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="Member.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Operator.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Person.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Member.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
