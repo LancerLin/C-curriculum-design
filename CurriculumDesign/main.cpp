@@ -2,5 +2,5 @@
 #include"Super.h"
 #include"Member.h"
 void main() {
-
+	int
 }
