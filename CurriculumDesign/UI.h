@@ -7,9 +7,11 @@ class UI:public Operator
 public:
 	UI();
 	void LoginUI();  //登陆界面
-	void CleanUI();  //清理屏幕
+	void Clean();  //清理屏幕
 	void Loginid();  //id登陆操作
 	void MemberUI(); //会员登陆界面
+	void ManagerUI();//管理员界面
+	void SuperUI();  //脏界面
 private:
 
 };

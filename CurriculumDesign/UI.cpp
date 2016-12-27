@@ -1,5 +1,4 @@
 #include "UI.h"
-
 #include<iostream>
 using namespace std;
 UI::UI()
@@ -30,13 +29,18 @@ void UI::LoginUI()
 			cout << "密码错误，请重新输入" << endl;
 			getchar();
 		} while (certpw(id) == false);//certpw()是布尔型 返回true就说明存在
-		if (id > 100000)
-		{
-
+		if (id > 100000){
+			MemberUI();
+		}
+		else if(id<1000){
+			SuperUI();
+		}
+		else {
+			ManagerUI();
 		}
 }
 
-void UI::CleanUI()
+void UI::Clean()
 {
 	system("Cls");
 }
@@ -47,5 +51,13 @@ void UI::Loginid()
 }
 
 void UI::MemberUI()
+{
+}
+
+void UI::ManagerUI()
+{
+}
+
+void UI::SuperUI()
 {
 }
