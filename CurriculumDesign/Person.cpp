@@ -4,29 +4,29 @@
 const int default_member =-1;
 Person::Person(char * inputname, int inputid, int inputpassword,int intputcredit)
 {
-	id = inputid;
-	password = inputpassword;
-	strcpy_s(name, inputname);
-	IsUsed = true;
-	credit = intputcredit;
+	data.id = inputid;
+	data.password = inputpassword;
+	strcpy_s(data.name, inputname);
+	data.IsUsed = true;
+	data.credit = intputcredit;
 }
 
 Person::Person()
 {
-	id = default_member;
-	password = default_member;
-	strcpy_s(name,"NULL");
-	IsUsed = false;
-	credit = default_member;
+	data.id = default_member;
+	data.password = default_member;
+	strcpy_s(data.name,"NULL");
+	data.IsUsed = false;
+	data.credit = default_member;
 }
 
 Person::Person(Person & p)
 {
-	strcpy_s(name, p.getname());
-	id = p.getid();
-	password = p.getpass();
-	credit = p.getcredit();
-	IsUsed = true;
+	strcpy_s(data.name, p.getname());
+	data.id = p.getid();
+	data.password = p.getpass();
+	data.credit = p.getcredit();
+	data.IsUsed = true;
 }
 
 

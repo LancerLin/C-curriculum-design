@@ -15,20 +15,32 @@ FileSys::~FileSys()
 }
 
 void FileSys::readMember(int ID) {
-
 	std::fstream inFile;
-	inFile.open("member.txt", std::ios::in | std::ios::binary);
-	inFile.seekg((ID - originID)*sizeof(Member), std::ios::beg);
-	inFile.read((char*)this,sizeof(Member));
+	inFile.open("member.txt", std::ios::in |std::ios::out| std::ios::binary);
+	inFile.seekg((ID - originID)*sizeof(D), std::ios::beg);
+	inFile.read((char*)getdata(),sizeof(D));
 	inFile.close();
-//	std::cout << getid() << getname() << std::endl;
-
 }
 void FileSys::writeMember() {
 	std::fstream outFile;
-	outFile.open("member.txt", std::ios::out | std::ios::binary);
-	outFile.seekp((this->getid() - originID) * sizeof(Member),std::ios::beg);
-	outFile.write((char*)this, sizeof(Member));
+	outFile.open("member.txt", std::ios::in|std::ios::out | std::ios::binary);
+	outFile.seekp((getid() - originID) * sizeof(D),std::ios::beg);
+	outFile.write((char*)getdata(), sizeof(D));
 	outFile.close();
-//	std::cout << getid() << getname() << std::endl;
 }
+/*
+void FileSys::readManager(int ID) {
+	std::fstream inFile;
+	inFile.open("manager.txt", std::ios::in | std::ios::out | std::ios::binary);
+	inFile.seekg((ID - originID) * sizeof(D), std::ios::beg);
+	inFile.read((char*)getdata(), sizeof(D));
+	inFile.close();
+}
+void FileSys::writeManager() {
+	std::fstream outFile;
+	outFile.open("manager.txt", std::ios::in | std::ios::out | std::ios::binary);
+	outFile.seekp((getid() - originID) * sizeof(D), std::ios::beg);
+	outFile.write((char*)getdata(), sizeof(D));
+	outFile.close();
+}
+*/
