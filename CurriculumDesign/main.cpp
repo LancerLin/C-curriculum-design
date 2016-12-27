@@ -17,26 +17,15 @@ int main() {
 	m1.show();
 	m2.show();
 	m3.show();
-//	m->show();
-	//FileSys f;
+
 	cout << "filesys write member" << endl;
 
-	m1.writeMember();
-	m2.writeMember();
-	m3.writeMember();
-
+	m1.write();
 	cout << "filesys read member" << endl;
-	
-	m1.readMember(10000001);
+
+	m1.read(10000002);
 	m1.show();
-	m2.readMember(10000002);
-	m2.show();
-	m3.readMember(10000000);
-	m3.show();
-	
-	m = new Member();
-	m->readMember(10000001);
-	m->show();
+
 
 	system("pause");
 	return 0;
