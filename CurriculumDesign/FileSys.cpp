@@ -1,4 +1,6 @@
 #include "FileSys.h"
+#include"Member.h"
+#include"Person.h"
 #include <fstream>
 #include <iostream>
 const int originID = 10000000;
@@ -12,19 +14,21 @@ FileSys::~FileSys()
 {
 }
 
-void FileSys::readMember(Person &p,int ID) {
+void FileSys::readMember(int ID) {
+
 	std::ifstream inFile;
 	inFile.open("member.txt", std::ios::in | std::ios::binary);
-	inFile.seekg((ID - originID)*(sizeof(Person)), std::ios::beg);
-	inFile.read((char*)&p,sizeof(Person));
+	inFile.seekg((ID - originID + 1)*(sizeof(Member)), std::ios::beg);
+	inFile.read((char*)this,sizeof(Member));
 	inFile.close();
-	std::cout << p.getid() << p.getname() << std::endl;
+//	std::cout << getid() << getname() << std::endl;
 
 }
-void FileSys::writeMember(Person &p) {
+void FileSys::writeMember() {
 	std::ofstream outFile;
 	outFile.open("member.txt", std::ios::out | std::ios::binary);
-	outFile.seekp((p.getid() - originID) * sizeof(Person));
-	outFile.write((char*)&p, sizeof(Person));
+	outFile.seekp((this->getid() - originID + 1) * sizeof(Member));
+	outFile.write((char*)this, sizeof(Member));
 	outFile.close();
+//	std::cout << getid() << getname() << std::endl;
 }

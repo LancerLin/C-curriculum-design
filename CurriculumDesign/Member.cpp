@@ -1,11 +1,7 @@
-#include"Member.h"
-#include<iostream>
-Member::Member(char * inputname, int inputid, int inputpassword):Person(inputname,inputid,inputpassword)
-{
+#include "Member.h"
+#include"Person.h"
+Member::Member():Person(){
 }
 
-void Member::show()
-{
-	Person::show();
-	std::cout << "»ı·Ö:" << getcredit() << std::endl;
+Member::Member(Person &p):Person(p) {
 }
