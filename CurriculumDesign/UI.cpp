@@ -10,7 +10,9 @@ void UI::LoginUI()
 	int id, pw;
 	int tp, cls;
 	Clean();
-	cout << "/t欢迎使用会员登录系统/t" << endl;
+	cout << "********************" << endl;
+	cout << "*欢迎使用会员登录系统*" << endl;
+
 
 	do //判断用户名存在性
 	{
@@ -60,6 +62,7 @@ void UI::MemberUI()
 	cout << "***************************" << endl;
 	cout << "请输入序号进行操作：" << endl;
 	//下面是操作内容，待补全
+	cin >> fg;
 	switch (fg)
 	{
 	case 1:
@@ -85,6 +88,7 @@ void UI::ManagerUI()
 	cout << "***************************" << endl;
 	cout << "请输入序号进行操作：" << endl;
 	//下面是操作内容，待补全
+	cin >> fg;
 	switch (fg)
 	{
 	case 1:
@@ -112,6 +116,7 @@ void UI::SuperUI()
 	cout << "***************************" << endl;
 	cout << "请输入序号进行操作：" << endl;
 	//下面是操作内容，待补全
+	cin >> fg;
 	switch (fg)
 	{
 	case 1:
