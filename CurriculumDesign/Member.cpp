@@ -1,12 +1,12 @@
 #include "Member.h"
-#include"Person.h"
-#include"UI.h"
+//#include"Person.h"
+//#include"UI.h"
 Member::Member():Person(){
 }
 
-Member::Member(D &d):Person(d)
-{
-}
+//Member::Member(D &d):Person(d)
+//{
+//}
 
 Member::Member(Person &p):Person(p) {
 }

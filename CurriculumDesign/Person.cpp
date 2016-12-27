@@ -20,12 +20,12 @@ Person::Person()
 	data.credit = default_member;
 }
 
-Person::Person(D & d)
+Person::Person(D * d)
 {
-	strcpy_s(data.name, d.name);
-	data.id = d.id;
-	data.password = d.password;
-	data.credit = d.credit;
+	strcpy_s(data.name, d->name);
+	data.id = d->id;
+	data.password = d->password;
+	data.credit = d->credit;
 	data.IsUsed = true;
 }
 

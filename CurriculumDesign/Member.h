@@ -10,7 +10,7 @@ class Member :virtual public Person, public FileSys,public UI {
 
 public:
 	Member();
-	Member(D &d);
+//	Member(D &d);
 	Member(Person &p);
 	void read(int ID);
 	void write();

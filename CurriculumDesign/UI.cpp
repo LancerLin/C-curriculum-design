@@ -142,16 +142,16 @@ void UI::Logout()
 	}
 }
 */
-D & UI::CreatMemberUI()
+D* UI::CreatMemberUI()
 {
 	
-	D p;
+	D *p=new D;
 	cout << "请输入用户名：" << endl;
-	cin >> p.name;
+	cin >> p->name;
 	cout << "请输入密码" << endl;
-	cin >> p.password;
-	p.IsUsed = true;
-	p.credit = 0;
+	cin >> p->password;
+	p->IsUsed = true;
+	p->credit = 0;
 	return p;
 	// TODO: 在此处插入 return 语句
 }

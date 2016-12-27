@@ -13,8 +13,8 @@ public:
 	void ManagerUI();//管理员界面
 	void SuperUI();  //脏界面
 	void Logout();   //注销
-	D & CreatMemberUI();
-	D & CreatManagerUI();
+	D * CreatMemberUI();
+	D * CreatManagerUI();
 private:
 
 };

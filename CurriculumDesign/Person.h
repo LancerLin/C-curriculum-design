@@ -15,7 +15,7 @@ private:
 public:
 	Person(char *inputname, int inputid, int inputpassword, int inputcredit);
 	Person();
-	Person(D &d);
+	Person(D *d);
 	Person(Person &p);
 	D* getdata() { return &data; }
 	int getpass() { return data.password; }

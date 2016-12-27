@@ -1,6 +1,6 @@
 #include "FileSys.h"
-#include"Member.h"
-#include"Person.h"
+//#include"Member.h"
+//#include"Person.h"
 #include <fstream>
 #include <iostream>
 //const int originID = 10000000;
