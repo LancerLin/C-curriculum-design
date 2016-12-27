@@ -1,8 +1,7 @@
 #pragma once
 //基类 Person.h
 //不能设置姓名 不能查看密码
-#include"Count.h"
-class Person:public Count{
+class Person{
 	char name[20];
 	int id; //长度决定等级
 	double password;

@@ -146,13 +146,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Count.h" />
     <ClInclude Include="FileSys.h" />
     <ClInclude Include="Manager.h" />
     <ClInclude Include="Member.h" />
     <ClInclude Include="Operator.h" />
     <ClInclude Include="Person.h" />
     <ClInclude Include="Super.h" />
+    <ClInclude Include="UI.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="FileSys.cpp" />
@@ -162,6 +162,7 @@
     <ClCompile Include="Operator.cpp" />
     <ClCompile Include="Person.cpp" />
     <ClCompile Include="Super.cpp" />
+    <ClCompile Include="UI.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
