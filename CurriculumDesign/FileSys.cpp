@@ -10,7 +10,7 @@ FileSys::FileSys()
 
 FileSys::~FileSys()
 {
-}
+} 
 
 void FileSys::readMember(Person &p,int ID) {
 	std::ifstream inFile;
