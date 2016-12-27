@@ -16,7 +16,7 @@ public:
 	int getid() { return id; }
 	int getcredit() { return credit; }
 	char *getname() { return name; }
-	//friend void setpassword(int x) { password = x; }
+//	friend void setpassword(int x) { password = x; }
 	void show();//ÏÔÊ¾ĞÕÃûºÍid
-	friend class Operator;
+//	friend class Operator;
 };

@@ -1,6 +1,6 @@
 #include<iostream>
 #include "Person.h"
-#include<string>
+
 const int default_member =-1;
 Person::Person(char * inputname, int inputid, int inputpassword,int intputcredit)
 {
