@@ -12,31 +12,29 @@ number of manager
 拓展功能对member信息检索
 
 */
-enum conduct_ {
-	add,
-	edit,
-	del
-};
-enum _conduct {
-	name,
-	password,
-	credit
-};
 typedef struct LIST {
-	conduct_ A;
-	_conduct B;
+	enum conduct_ {
+		add,
+		edit,
+		del
+	};
+	enum _conduct {
+		name,
+		password,
+		credit
+	};
 	int ID;
-	LIST* next;
-}infoList;
-typedef struct LOGtable {
+	List *next;
+}List;
+typedef struct LOG {
 	int noMember;//number of Member
 	int noManager;//number of Manager
-	infoList l;
-}LOGtable;
+	List l;
+}Log;
 class Log:public FileSys
 {
 private:
-	LOGtable L;
+	Log Log;
 public:
 	Log();
 	~Log();

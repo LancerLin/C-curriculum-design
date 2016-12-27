@@ -3,7 +3,7 @@
 //#include"Person.h"
 #include <fstream>
 #include <iostream>
-//const int originID = 10000000;
+const int originID = 10000000;
 
 FileSys::FileSys()
 {
@@ -15,8 +15,6 @@ FileSys::~FileSys()
 }
 //member根据ID读取文件信息
 //P.S.会覆盖内存完整信息
-//==============================已经转移到member read/write下
-/*
 void FileSys::readMember(int ID) {
 	std::fstream inFile;
 	inFile.open("member.txt", std::ios::in |std::ios::out| std::ios::binary);
@@ -32,9 +30,6 @@ void FileSys::writeMember() {
 	outFile.write((char*)getdata(), sizeof(D));
 	outFile.close();
 }
-//===============================
-*/
-
 /*
 //Manager根据ID读取文件信息
 //P.S.会覆盖内存完整信息
