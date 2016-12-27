@@ -9,7 +9,7 @@ void UI::LoginUI()
 {
 	int id, pw;
 	int tp, cls;
-	CleanUI();
+	Clean();
 	cout << "/t欢迎使用会员登录系统/t" << endl;
 
 	do //判断用户名存在性
@@ -45,19 +45,96 @@ void UI::Clean()
 	system("Cls");
 }
 
-void UI::Loginid()
-{
-
-}
 
 void UI::MemberUI()
 {
+	int fg;
+	Clean();
+	cout << "****************************" << endl;
+	cout << "*     欢迎进入会员界面      *" << endl;
+	cout << "*   1.查询个人信息         *" << endl;
+	cout << "*   2.消费积分             *" << endl;
+	cout << "*   3.查询账户操作          *" << endl;
+	cout << "*   4.修改密码             *" << endl;
+	cout << "*   5.注销登陆             *" << endl;
+	cout << "***************************" << endl;
+	cout << "请输入序号进行操作：" << endl;
+	//下面是操作内容，待补全
+	switch (fg)
+	{
+	case 1:
+	case 2:
+	case 3:
+	case 4:
+	case 5: Logout(); break;
+	default:
+		break;
+	}
 }
 
 void UI::ManagerUI()
 {
+	int fg;
+	Clean();
+	cout << "****************************" << endl;
+	cout << "*     欢迎进入经理界面      *" << endl;
+	cout << "*   1.查询会员信息          *" << endl;
+	cout << "*   2.新会员注册            *" << endl;
+	cout << "*   3.充值会员积分          *" << endl;
+	cout << "*   4.注销登陆             *" << endl;
+	cout << "***************************" << endl;
+	cout << "请输入序号进行操作：" << endl;
+	//下面是操作内容，待补全
+	switch (fg)
+	{
+	case 1:
+	case 2:
+	case 3:
+	case 4:Logout(); break;
+	default:
+		break;
+	}
 }
 
 void UI::SuperUI()
 {
+	int fg;
+	Clean();
+	cout << "****************************" << endl;
+	cout << "*     欢迎进入超级经理界面   *" << endl;
+	cout << "*   1.查询账户信息          *" << endl;
+	cout << "*   2.新会员注册            *" << endl;
+	cout << "*   3.删除会员账户          *" << endl;
+	cout << "*   4.删除经理账            *" << endl;
+	cout << "*   4.会员积分操作          *" << endl;
+	cout << "*   5.导出所有账户信息       *" << endl;
+	cout << "*   6.注销登陆              *" << endl;
+	cout << "***************************" << endl;
+	cout << "请输入序号进行操作：" << endl;
+	//下面是操作内容，待补全
+	switch (fg)
+	{
+	case 1:
+	case 2:
+	case 3:
+	case 4:
+	case 5:
+	case 6: Logout(); break;
+	default:
+		break;
+	}
+}
+
+void UI::Logout()
+{
+	char fg;
+	cout << "是否确定注销（Y\N）?" << endl;
+	cin >> fg;
+	if (fg == 'Y') {
+		cout << "********************" << endl;
+		cout << "* Log out succeed  *" << endl;
+		cout << "********************" << endl;
+		getchar();
+		LoginUI();
+	}
 }
