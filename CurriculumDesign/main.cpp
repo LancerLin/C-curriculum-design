@@ -3,5 +3,5 @@
 #include"Member.h"
 
 void main() {
-
+	123
 }
