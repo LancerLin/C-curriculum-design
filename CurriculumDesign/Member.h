@@ -10,5 +10,5 @@ class Member :virtual public Person, public FileSys {
 public:
 	Member();
 	Member(Person &p);
-
+	void createMember(char *inputname, int inputid, int inputpassword);
 };
