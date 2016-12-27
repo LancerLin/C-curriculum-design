@@ -3,6 +3,7 @@ using namespace std;
 #include"Person.h"
 //#include"FileSys.h"
 #include"Member.h"
+
 int main() {
 	cout << sizeof(D)<<endl;
 	cout << "person show" << endl;
@@ -13,7 +14,7 @@ int main() {
 	p2.show();
 	p3.show();
 	cout <<"member show" <<endl;
-	Member m1(p1),m2(p2),m3(p3),*m;
+	Member m1(p1),m2(p2),m3(p3);
 	m1.show();
 	m2.show();
 	m3.show();
@@ -26,6 +27,7 @@ int main() {
 	m1.read(10000002);
 	m1.show();
 
+	m1.createMember();
 
 	system("pause");
 	return 0;

@@ -1,6 +1,11 @@
 #include "Member.h"
 #include"Person.h"
+#include"UI.h"
 Member::Member():Person(){
+}
+
+Member::Member(D &d):Person(d)
+{
 }
 
 Member::Member(Person &p):Person(p) {
@@ -24,10 +29,10 @@ void Member::write()
 	outFile.close();
 }
 
-void Member::createMember(char * inputname, int inputid, int inputpassword)
+void Member::createMember()
 {
 	
 	Person *p;
-	p = new Person();
+	p = new Person(CreatManagerUI());
 
 }

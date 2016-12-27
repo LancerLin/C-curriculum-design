@@ -4,11 +4,11 @@ using namespace std;
 UI::UI()
 {
 }
-
+/*
 void UI::LoginUI()
 {
 	int id, pw;
-	int tp, cls;
+//	int tp, cls;
 	Clean();
 	cout << "/t欢迎使用会员登录系统/t" << endl;
 
@@ -60,6 +60,7 @@ void UI::MemberUI()
 	cout << "***************************" << endl;
 	cout << "请输入序号进行操作：" << endl;
 	//下面是操作内容，待补全
+	cin >> fg;
 	switch (fg)
 	{
 	case 1:
@@ -85,6 +86,7 @@ void UI::ManagerUI()
 	cout << "***************************" << endl;
 	cout << "请输入序号进行操作：" << endl;
 	//下面是操作内容，待补全
+	cin >> fg;
 	switch (fg)
 	{
 	case 1:
@@ -112,6 +114,7 @@ void UI::SuperUI()
 	cout << "***************************" << endl;
 	cout << "请输入序号进行操作：" << endl;
 	//下面是操作内容，待补全
+	cin >> fg;
 	switch (fg)
 	{
 	case 1:
@@ -128,7 +131,7 @@ void UI::SuperUI()
 void UI::Logout()
 {
 	char fg;
-	cout << "是否确定注销（Y\N）?" << endl;
+	cout << "是否确定注销（Y/N）?" << endl;
 	cin >> fg;
 	if (fg == 'Y') {
 		cout << "********************" << endl;
@@ -137,4 +140,18 @@ void UI::Logout()
 		getchar();
 		LoginUI();
 	}
+}
+*/
+D & UI::CreatMemberUI()
+{
+	
+	D p;
+	cout << "请输入用户名：" << endl;
+	cin >> p.name;
+	cout << "请输入密码" << endl;
+	cin >> p.password;
+	p.IsUsed = true;
+	p.credit = 0;
+	return p;
+	// TODO: 在此处插入 return 语句
 }
