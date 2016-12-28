@@ -13,7 +13,6 @@ void UI::LoginUI()
 	cout << "********************" << endl;
 	cout << "*欢迎使用会员登录系统*" << endl;
 
-
 	do //判断用户名存在性
 	{
 		cout << "请输入用户ID:" << endl;
