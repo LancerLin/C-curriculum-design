@@ -1,13 +1,18 @@
 #pragma once
-#define Member_h
 #include"Person.h"
+#include"FileSys.h"
+#include <fstream>
+#include"UI.h"
+const int originID = 10000000;
 //会员等级制度暂且保留
 //会员类 
-class Member:public Person {
-	int credit; //积分
+class Member :virtual public Person, public FileSys,public UI {
+
 public:
-	Member(char *inputname, int inputid, int inputpassword);
-	int getcredit() { return credit; }
-	void show();
-	friend class Operator;
+	Member();
+//	Member(D &d);
+	Member(Person &p);
+	void read(int ID);
+	void write();
+//	void createMember(); 不是我的功能
 };

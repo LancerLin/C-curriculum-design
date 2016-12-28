@@ -1,12 +1,11 @@
 #pragma once
-#include "Person.h"
-class FileSys:virtual Person
+class FileSys
 {
 public:
 	FileSys();
 	~FileSys();
-	void readMember(Person &p,int ID);
-	void writeMember(Person &p);
-
+	virtual void read(int ID) = 0;
+	virtual void write() = 0;
+//	virtual void check() = 0;
 };
 

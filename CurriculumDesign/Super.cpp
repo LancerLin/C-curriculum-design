@@ -2,5 +2,5 @@
 #include"Operator.h"
 Super::Super()
 {
-	Super::Person("admin",100,66666);
+//	Super::Person("admin",100,66666);
 }

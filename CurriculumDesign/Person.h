@@ -1,17 +1,29 @@
 #pragma once
 //基类 Person.h
 //不能设置姓名 不能查看密码
-class Person{
+typedef struct DATA {
 	char name[20];
 	int id; //长度决定等级
-	double password;
+	int password;
+	int credit;
 	bool IsUsed;
+}D;
+
+class Person{
+private:
+	D data;
 public:
-	Person(char *inputname, int inputid, int inputpassword);
+	Person(char *inputname, int inputid, int inputpassword, int inputcredit);
 	Person();
-	int getid() { return id; }
-	char *getname() { return name; }
-	//friend void setpassword(int x) { password = x; }
-	void show();//显示姓名和id
-	friend class Operator;
+	Person(D *d);
+	Person(Person &p);
+	D* getdata() { return &data; }
+	int getpass() { return data.password; }
+	int getid() { return data.id; }
+	int getcredit() { return data.credit; }
+	char *getname() { return data.name; }
+	bool isued() { return data.IsUsed; }
+//	friend void setpassword(int x) { password = x; }
+	void show();//显示姓名和id和credit
+//	friend class Operator;
 };

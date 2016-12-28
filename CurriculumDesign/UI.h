@@ -1,8 +1,9 @@
 #pragma once
 //UI.h 界面
 #include <stdlib.h>
-#include"Operator.h"
-class UI:public Operator
+#include "Person.h"
+//#include"Operator.h"
+class UI//:public Operator
 {
 public:
 	UI();
@@ -12,6 +13,8 @@ public:
 	void ManagerUI();//管理员界面
 	void SuperUI();  //脏界面
 	void Logout();   //注销
+	D * CreatMemberUI();
+	//D * CreatManagerUI();
 private:
 
 };

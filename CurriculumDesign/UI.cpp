@@ -4,14 +4,13 @@ using namespace std;
 UI::UI()
 {
 }
-
+/*
 void UI::LoginUI()
 {
 	int id, pw;
-	int tp, cls;
+//	int tp, cls;
 	Clean();
-	cout << "********************" << endl;
-	cout << "*欢迎使用会员登录系统*" << endl;
+	cout << "/t欢迎使用会员登录系统/t" << endl;
 
 	do //判断用户名存在性
 	{
@@ -132,7 +131,7 @@ void UI::SuperUI()
 void UI::Logout()
 {
 	char fg;
-	cout << "是否确定注销（Y\N）?" << endl;
+	cout << "是否确定注销（Y/N）?" << endl;
 	cin >> fg;
 	if (fg == 'Y') {
 		cout << "********************" << endl;
@@ -141,4 +140,19 @@ void UI::Logout()
 		getchar();
 		LoginUI();
 	}
+}
+*/
+D* UI::CreatMemberUI()
+{
+	
+	D *p=new D;
+	cout << "请输入用户名：" << endl;
+	cin >> p->name;
+	cout << "请输入密码" << endl;
+	cin >> p->password;
+//	p->id = 0;        获取ID
+	p->IsUsed = true;
+	p->credit = 0;
+	return p;
+	// TODO: 在此处插入 return 语句
 }

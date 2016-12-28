@@ -1,11 +1,48 @@
-#include"Member.h"
-#include<iostream>
-Member::Member(char * inputname, int inputid, int inputpassword):Person(inputname,inputid,inputpassword)
-{
+#include "Member.h"
+//#include"Person.h"
+//#include"UI.h"
+Member::Member():Person(){
 }
 
-void Member::show()
-{
-	Person::show();
-	std::cout << "积分:" << getcredit() << std::endl;
+//Member::Member(D &d):Person(d)
+//{
+//}
+
+Member::Member(Person &p):Person(p) {
 }
+
+void Member::read(int ID)
+{
+	std::fstream inFile;
+	inFile.open("member.txt", std::ios::in | std::ios::out | std::ios::binary);
+	inFile.seekg((ID - originID) * sizeof(D), std::ios::beg);
+	inFile.read((char*)getdata(), sizeof(D));
+	inFile.close();
+}
+
+void Member::write()
+{
+	std::fstream outFile;
+	outFile.open("member.txt", std::ios::in | std::ios::out | std::ios::binary);
+	outFile.seekp((getid() - originID) * sizeof(D), std::ios::beg);
+	outFile.write((char*)getdata(), sizeof(D));
+	outFile.close();
+}
+/*operator 功能
+void Member::check()
+{
+	Person  *p = new Person();
+	read(getid());
+}
+*/
+/*  manager 功能
+void Member::createMember()
+{
+	
+	Person *p;
+	p = new Person(CreatMemberUI());
+	p->
+	Member *m = new Member(*p);
+	m->write();
+	
+}*/
