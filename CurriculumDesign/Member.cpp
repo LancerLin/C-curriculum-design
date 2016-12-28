@@ -28,7 +28,14 @@ void Member::write()
 	outFile.write((char*)getdata(), sizeof(D));
 	outFile.close();
 }
-
+/*operator 功能
+void Member::check()
+{
+	Person  *p = new Person();
+	read(getid());
+}
+*/
+/*  manager 功能
 void Member::createMember()
 {
 	
@@ -37,4 +44,5 @@ void Member::createMember()
 	p->
 	Member *m = new Member(*p);
 	m->write();
-}
+	
+}*/

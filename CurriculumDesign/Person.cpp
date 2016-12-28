@@ -43,4 +43,5 @@ void Person::show()
 {
 	std::cout << "ÐÕÃû£º" << getname() << std::endl;
 	std::cout << "ID£º" << getid() << std::endl;
+	std::cout << "»ý·Ö£º" << getcredit() << std::endl;
 }

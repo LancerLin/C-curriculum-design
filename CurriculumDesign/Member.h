@@ -14,5 +14,5 @@ public:
 	Member(Person &p);
 	void read(int ID);
 	void write();
-	void createMember();
+//	void createMember(); 不是我的功能
 };
