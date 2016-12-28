@@ -33,6 +33,8 @@ void Member::createMember()
 {
 	
 	Person *p;
-	p = new Person(CreatManagerUI());
-
+	p = new Person(CreatMemberUI());
+	p->
+	Member *m = new Member(*p);
+	m->write();
 }

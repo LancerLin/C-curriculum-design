@@ -5,7 +5,7 @@ class FileSys:virtual public Person
 public:
 	FileSys();
 	~FileSys();
-	void readMember( int ID);
-	void writeMember();
+	virtual void read( int ID)=0;
+	virtual void write()=0;
 };
 

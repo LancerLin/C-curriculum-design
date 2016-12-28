@@ -14,7 +14,7 @@ public:
 	void SuperUI();  //Ôà½çÃæ
 	void Logout();   //×¢Ïú
 	D * CreatMemberUI();
-	D * CreatManagerUI();
+	//D * CreatManagerUI();
 private:
 
 };

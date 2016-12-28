@@ -150,6 +150,7 @@ D* UI::CreatMemberUI()
 	cin >> p->name;
 	cout << "ÇëÊäÈëÃÜÂë" << endl;
 	cin >> p->password;
+//	p->id = 0;        »ñÈ¡ID
 	p->IsUsed = true;
 	p->credit = 0;
 	return p;
