@@ -52,3 +52,21 @@ bool Operator::certpw(Person &p, int inputpw)
 	inFile.close();
 	return _p->getpass()==inputpw;
 }
+
+D * Operator::ReID(int inputid)
+{
+	Person *_p = new Person();
+	char filename[20] = { 0 };
+	if (inputid >= MemberStartNumber) {
+		strcpy_s(filename, memberpath);
+	}
+	else if (inputid >= ManagerStartNumber) {
+		strcpy_s(filename, managerpath);
+	}
+	std::fstream inFile;
+	inFile.open(filename, std::ios::in | std::ios::out | std::ios::binary);
+	inFile.seekg((inputid - originID) * sizeof(D), std::ios::beg);
+	inFile.read((char*)_p, sizeof(D));
+	inFile.close();
+	return _p;
+}

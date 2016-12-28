@@ -9,9 +9,9 @@ UI::UI()
 void UI::LoginUI()
 {
 	int id, pw;
-//	int tp, cls;
+	//	int tp, cls;
 	Clean();
-	cout << "/t欢迎使用会员登录系统/t" << endl;
+	cout << "欢迎使用会员登录系统" << endl;
 
 	do //判断用户名存在性
 	{
@@ -22,23 +22,23 @@ void UI::LoginUI()
 		getchar();
 	} while (Operator::certid(id) == false);//certid()是布尔型 返回true就说明存在
 
-		do //判断密码是否正确
-		{
-			cout << "请输入密码:" << endl;
-			cin >> pw;
-			if (Operator::certid(id) == true) break;  //如果存在就跳出循环
-			cout << "密码错误，请重新输入" << endl;
-			getchar();
-		} while (Operator::certid(id) == false);//certpw()是布尔型 返回true就说明存在
-		if (id > 100000){
-			MemberUI();
-		}
-		else if(id<1000){
-			SuperUI();
-		}
-		else {
-			ManagerUI();
-		}
+	do //判断密码是否正确
+	{
+		cout << "请输入密码:" << endl;
+		cin >> pw;
+		if (Operator::certid(id) == true) break;  //如果存在就跳出循环
+		cout << "密码错误，请重新输入" << endl;
+		getchar();
+	} while (Operator::certid(id) == false);//certpw()是布尔型 返回true就说明存在
+	if (id > 100000) {
+		MemberUI(id);
+	}
+	else if (id < 1000) {
+		SuperUI();
+	}
+	else {
+		ManagerUI();
+	}
 }
 
 void UI::Clean()
@@ -47,8 +47,9 @@ void UI::Clean()
 }
 
 
-void UI::MemberUI()
+void UI::MemberUI(int inputid)   //传入当前id 用作限制当前操作
 {
+	int id = inputid;
 	int fg;
 	Clean();
 	cout << "****************************" << endl;
@@ -63,7 +64,7 @@ void UI::MemberUI()
 	cin >> fg;
 	switch (fg)
 	{
-	case 1:
+	case 1:Checkinfo(id);
 	case 2:
 	case 3:
 	case 4:
@@ -116,7 +117,7 @@ void UI::SuperUI()
 	cin >> fg;
 	switch (fg)
 	{
-	case 1:
+	case 1:Checkinfo();
 	case 2:
 	case 3:
 	case 4:
@@ -141,15 +142,51 @@ void UI::Logout()
 	}
 }
 
+void UI::Checkinfo()
+{
+	int inputid;
+	cout << "***************" << endl;
+	cout << "请输入查询的账户ID" << endl;
+
+	cin >> inputid;
+	if (Operator::certid(inputid) == false) {
+		cout << "你输入的ID不存在，将返回操作界面" << endl;
+		getchar();
+	}
+	else if (Operator::certid(inputid) == true) {
+		Member *m = new Member();  //下面两句用于获取id的位置以便输出
+		m->read(inputid);
+		cout << "*******************" << endl;
+		cout << "用户姓名：" << m->getname << endl;
+		cout << "用户ID：" << m->getid << endl;
+		cout << "用户积分：" << m->getcredit << endl;
+		cout << "使用情况：" << m->isued << endl;
+		cout << "*******************" << endl;
+	}
+}
+
+void UI::Checkinfo(int inputid)
+{
+	Member *m = new Member();  //下面两句用于获取id的位置以便输出
+	m->read(inputid);
+	cout << "*******************" << endl;
+	cout << "用户姓名：" << m->getname << endl;
+	cout << "用户ID：" << m->getid << endl;
+	cout << "用户积分：" << m->getcredit << endl;
+	cout << "使用情况：" << m->isued << endl;
+	cout << "*******************" << endl;
+
+}
 D* UI::CreatMemberUI()
 {
-	
-	D *p=new D;
-	cout << "请输入用户名：" << endl;
+
+	D *p = new D;
+	cout << "********************" << endl;
+	cout << "请输入新姓名：" << endl;
 	cin >> p->name;
-	cout << "请输入密码" << endl;
+	cout << "请设置密码" << endl;
 	cin >> p->password;
-//	p->id = 0;        获取ID
+	//	p->id = 0;        获取ID
 	p->IsUsed = true;
 	p->credit = 0;
 	return p;
