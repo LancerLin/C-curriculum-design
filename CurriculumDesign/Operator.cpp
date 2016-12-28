@@ -17,19 +17,19 @@ void Operator::createManager(char * inputname, int inputid, int inputpassword)
 	//文件操作:会员数量++
 }
 
-bool Operator::certid(Person &p, int inputid)
+bool Operator::certid(int inputid)
 {
 	Person *_p = new Person();
-	char filename[20] = {0};
-	if (p.getid() >= MemberStartNumber) {
-		strcpy_s(filename,memberpath);
+	char filename[20] = { 0 };
+	if (inputid >= MemberStartNumber) {
+		strcpy_s(filename, memberpath);
 	}
-	else if (p.getid() >= ManagerStartNumber) {
+	else if (inputid >= ManagerStartNumber) {
 		strcpy_s(filename, managerpath);
 	}
 	std::fstream inFile;
 	inFile.open(filename, std::ios::in | std::ios::out | std::ios::binary);
-	inFile.seekg((p.getid() - originID) * sizeof(D), std::ios::beg);
+	inFile.seekg((inputid - originID) * sizeof(D), std::ios::beg);
 	inFile.read((char*)_p, sizeof(D));
 	inFile.close();
 	return _p->isued();

@@ -31,7 +31,7 @@ int main() {
 
 	cout << "=======" << endl;
 	Operator o;
-	if (o.certpw(m1, 3)) 
+	if (o.certpw(m1,3)) 
 		cout << "y";
 	else 
 		cout << "N";
