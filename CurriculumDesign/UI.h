@@ -2,8 +2,8 @@
 //UI.h ΩÁ√Ê
 #include <stdlib.h>
 #include "Person.h"
-//#include"Operator.h"
-class UI//:public Operator
+#include"Operator.h"
+class UI:public Operator
 {
 public:
 	UI();

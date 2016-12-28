@@ -1,10 +1,11 @@
 #include "UI.h"
 #include<iostream>
+#include"Operator.h"
 using namespace std;
 UI::UI()
 {
 }
-/*
+
 void UI::LoginUI()
 {
 	int id, pw;
@@ -16,19 +17,19 @@ void UI::LoginUI()
 	{
 		cout << "请输入用户ID:" << endl;
 		cin >> id;
-		if (certid(id) == true) break;  //如果存在就跳出循环
+		if (Operator::certid(id) == true) break;  //如果存在就跳出循环
 		cout << "用户名，请重新输入" << endl;
 		getchar();
-	} while (certid(id) == false);//certid()是布尔型 返回true就说明存在
+	} while (Operator::certid(id) == false);//certid()是布尔型 返回true就说明存在
 
 		do //判断密码是否正确
 		{
 			cout << "请输入密码:" << endl;
 			cin >> pw;
-			if (certpw(id) == true) break;  //如果存在就跳出循环
+			if (Operator::certid(id) == true) break;  //如果存在就跳出循环
 			cout << "密码错误，请重新输入" << endl;
 			getchar();
-		} while (certpw(id) == false);//certpw()是布尔型 返回true就说明存在
+		} while (Operator::certid(id) == false);//certpw()是布尔型 返回true就说明存在
 		if (id > 100000){
 			MemberUI();
 		}
@@ -53,7 +54,6 @@ void UI::MemberUI()
 	cout << "****************************" << endl;
 	cout << "*     欢迎进入会员界面      *" << endl;
 	cout << "*   1.查询个人信息         *" << endl;
-	cout << "*   2.消费积分             *" << endl;
 	cout << "*   3.查询账户操作          *" << endl;
 	cout << "*   4.修改密码             *" << endl;
 	cout << "*   5.注销登陆             *" << endl;
@@ -106,8 +106,7 @@ void UI::SuperUI()
 	cout << "*     欢迎进入超级经理界面   *" << endl;
 	cout << "*   1.查询账户信息          *" << endl;
 	cout << "*   2.新会员注册            *" << endl;
-	cout << "*   3.删除会员账户          *" << endl;
-	cout << "*   4.删除经理账            *" << endl;
+	cout << "*   3.注销 恢复账户          *" << endl;
 	cout << "*   4.会员积分操作          *" << endl;
 	cout << "*   5.导出所有账户信息       *" << endl;
 	cout << "*   6.注销登陆              *" << endl;
@@ -141,7 +140,7 @@ void UI::Logout()
 		LoginUI();
 	}
 }
-*/
+
 D* UI::CreatMemberUI()
 {
 	
