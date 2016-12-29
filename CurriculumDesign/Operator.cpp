@@ -24,15 +24,18 @@ bool Operator::Certid(int inputid)
 	}
 	Person *_p = new Person();
 	char filename[20] = { 0 };
+	int StartNumber = 0;
 	if (inputid >= MemberStartNumber) {
 		strcpy_s(filename, memberpath);
+		StartNumber = MemberStartNumber;
 	}
 	else if (inputid >= ManagerStartNumber) {
 		strcpy_s(filename, managerpath);
+		StartNumber = ManagerStartNumber;
 	}
 	std::fstream inFile;
 	inFile.open(filename, std::ios::in | std::ios::out | std::ios::binary);
-	inFile.seekg((inputid - MemberStartNumber) * sizeof(D), std::ios::beg);
+	inFile.seekg((inputid - StartNumber) * sizeof(D), std::ios::beg);
 	inFile.read((char*)_p, sizeof(D));
 	inFile.close();
 	return _p->isued();
@@ -45,15 +48,18 @@ bool Operator::Certpw(Person &p, int inputpw)
 	}
 	Person *_p = new Person();
 	char filename[20] = { 0 };
+	int StartNumber = 0;
 	if (p.getid() >= MemberStartNumber) {
 		strcpy_s(filename, memberpath);
+		StartNumber = MemberStartNumber;
 	}
 	else if (p.getid() >= ManagerStartNumber) {
 		strcpy_s(filename, managerpath);
+		StartNumber = ManagerStartNumber;
 	}
 	std::fstream inFile;
 	inFile.open(filename, std::ios::in | std::ios::out | std::ios::binary);
-	inFile.seekg((p.getid() - MemberStartNumber) * sizeof(D), std::ios::beg);
+	inFile.seekg((p.getid() - StartNumber) * sizeof(D), std::ios::beg);
 	inFile.read((char*)_p, sizeof(D));
 	inFile.close();
 	return _p->getpass() == inputpw;
@@ -62,37 +68,44 @@ bool Operator::Certpw(Person &p, int inputpw)
 void Operator::Checkinfo()
 {
 	int inputid;
+	system("Cls");
 	cout << "***************" << endl;
 	cout << "请输入查询的账户ID" << endl;
 
 	cin >> inputid;
 	if (Operator::Certid(inputid) == false) {
-		cout << "你输入的ID不存在，将返回操作界面" << endl;
-		getchar();
+		cout << "你输入的ID不存在，按回车返回操作界面" << endl;
+		getchar(); getchar();
+		return;
 	}
 	else if (Operator::Certid(inputid) == true) {
 		Member *m = new Member();  //下面两句用于获取id的位置以便输出
 		m->Read(inputid);
+		system("Cls");
 		cout << "*******************" << endl;
 		cout << "用户姓名：" << m->getname() << endl;
 		cout << "用户ID：" << m->getid() << endl;
 		cout << "用户积分：" << m->getcredit() << endl;
 		cout << "使用情况：" << m->isued() << endl;
 		cout << "*******************" << endl;
+		cout << "按回车返回界面" << endl;
 	}
+	getchar(); getchar();
 }
 
 void Operator::Checkinfo(int inputid)
 {
 	Member *m = new Member();  //下面两句用于获取id的位置以便输出
 	m->Read(inputid);
+	system("Cls");
 	cout << "*******************" << endl;
 	cout << "用户姓名：" << m->getname() << endl;
 	cout << "用户ID：" << m->getid() << endl;
 	cout << "用户积分：" << m->getcredit() << endl;
 	cout << "使用情况：" << m->isued() << endl;
 	cout << "*******************" << endl;
-
+	cout << "按回车返回界面" << endl;
+	getchar(); getchar();
 }
 
 void Operator::ChangePw()
@@ -134,17 +147,19 @@ void Operator::ChangePw(int inputid)
 	int NewPw, tp;
 	Member *m = new Member();
 	m->Read(inputid);
+	system("Cls");
 	cout << "*****************" << endl;
 	cout << "请输入新密码:";
 	cin >> NewPw;
 	cout << "请再次输入新密码：";
 	cin >> tp;
 	if (NewPw == tp) {
-		cout << "新密码为" << NewPw << endl;
 		if (IsYes() == true) {
 			m->setpassword(NewPw);
 			cout << "新密码设置成功" << endl;
-			getchar();
+			cout << "新密码为" << m->getpass() << endl;
+			m->Write();
+			getchar(); getchar();
 			return;
 		}
 	}
@@ -237,12 +252,14 @@ void Operator::ChangeCredit()
 
 }
 
+
+
+
 bool Operator::IsYes()
 {
 	char fg;
 	cout << "******************" << endl;
 	cout << "是否确定（y/n）?" << endl;
-
 	cin >> fg;
 	switch (fg)
 	{

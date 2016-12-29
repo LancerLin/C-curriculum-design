@@ -5,6 +5,8 @@ using namespace std;
 #include "Operator.h"
 #include"baseinfo.h"
 int main() {
+
+	/*
 	D *d=new D;
 	d->id = ManagerStartNumber;
 	strcpy_s(d->name, "guanli_1");
@@ -18,13 +20,18 @@ int main() {
 	d1->IsUsed = true;
 	d1->password = 1;
 	d1->credit = 0;
-
+	
 	Manager *p=new Manager();
 	p->CreateMember(d1);
 	Operator o;
 	o.CreateManager(d);
-	//UI u;
-	//u.LoginUI();
+*/
+
+	UI u;
+	u.LoginUI();
+	//u.ManagerUI(10000);
 	system("pause");
 	return 0;
+
+
 }

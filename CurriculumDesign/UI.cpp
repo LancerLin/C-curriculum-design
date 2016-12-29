@@ -5,33 +5,36 @@ using namespace std;
 UI::UI()
 {
 	LOGT.Read_log();
-	
+
 }
 
 void UI::LoginUI()
 {
 	int id, pw;
-	D *d=NULL;
+	D *d = NULL;
 	//	int tp, cls;
-	Clean();
-	cout << "欢迎使用会员登录系统" << endl;
 
 	do //判断用户名存在性
 	{
+		Clean();
+		cout << "***********************" << endl;
+		cout << "欢迎使用会员登录系统" << endl;
+		cout << "*********************" << endl;
 		cout << "请输入用户ID:" << endl;
 		cin >> id;
 		if (Operator::Certid(id)) break;  //如果存在就跳出循环
-		cout << "用户名，请重新输入" << endl;
-		getchar();
+		system("Cls");
+		cout << "用户名不存在，请按回车重新输入" << endl;
+		getchar(); getchar();
 	} while (!Operator::Certid(id));//certid()是布尔型 返回true就说明存在
-	if (id > MemberStartNumber) {
+	if (id >= MemberStartNumber) {
 		Member *mb_p = new Member();
-		mb_p->Read(id);
+		mb_p->Member::Read(id);
 		d = mb_p->getdata();
 	}
-	else if (id > ManagerStartNumber) {
+	else if (id >= ManagerStartNumber) {
 		Manager *mg_p = new Manager();
-		mg_p->Read(id);
+		mg_p->Manager::Read(id);
 		d = mg_p->getdata();
 	}
 	else if (SuperID == id) {
@@ -40,22 +43,22 @@ void UI::LoginUI()
 		d->id = SuperID;
 		d->password = SuperPass;
 	}
-	
+
 	do //判断密码是否正确
 	{
 		cout << "请输入密码:" << endl;
 		cin >> pw;
-		if (Operator::Certpw(Person(d),pw) == true) break;  //如果存在就跳出循环
+		if (Operator::Certpw(Person(d), pw) == true) break;  //如果存在就跳出循环
 		cout << "密码错误，请重新输入" << endl;
 		getchar();
-	} while (Operator::Certpw(Person(d),pw) == false);//certpw()是布尔型 返回true就说明存在
-	if (id > MemberStartNumber) {
+	} while (Operator::Certpw(Person(d), pw) == false);//certpw()是布尔型 返回true就说明存在
+	if (id >= MemberStartNumber) {
 		MemberUI(id);
 	}
-	else if (id > ManagerStartNumber) {
+	else if (id >= ManagerStartNumber) {
 		ManagerUI(id);
 	}
-	else if(SuperPass==pw){
+	else if (SuperPass == pw) {
 		SuperUI(id);
 	}
 }
@@ -74,11 +77,12 @@ void UI::MemberUI(const int inputid)   //传入当前id 用作限制当前操作
 
 		Clean();
 		cout << "****************************" << endl;
-		cout << "*     欢迎进入会员界面      *" << endl;
-		cout << "*   1.查询个人信息         *" << endl;
-		cout << "*   2.查询账户操作          *" << endl;
-		cout << "*   3.修改密码             *" << endl;
-		cout << "*   4.注销登陆             *" << endl;
+		cout << "*     欢迎进入会员界面    " << endl;
+		cout << "*   当前ID:" << inputid << endl;
+		cout << "*   1.查询个人信息        " << endl;
+		cout << "*   2.查询账户操作          " << endl;
+		cout << "*   3.修改密码             " << endl;
+		cout << "*   4.注销登陆             " << endl;
 		cout << "***************************" << endl;
 		cout << "请输入序号进行操作：" << endl;
 		//下面是操作内容，待补全
@@ -141,7 +145,7 @@ void UI::SuperUI(const int inputid)
 		switch (fg)
 		{
 		case 1:Checkinfo(); continue;
-		case 2:CreatMemberUI();continue;
+		case 2:CreatMemberUI(); continue;
 		case 3:ChangeIsused(); continue;
 		case 4:ChangeCredit(); continue;
 		case 5:ShowAllCount(); continue;
@@ -155,11 +159,12 @@ void UI::Logout()
 	char fg;
 	cout << "是否确定注销（Y/N）?" << endl;
 	cin >> fg;
-	if (fg == 'Y') {
+	if (fg == 'Y' || fg == 'y') {
+		system("Cls");
 		cout << "********************" << endl;
 		cout << "* Log out succeed  *" << endl;
 		cout << "********************" << endl;
-		getchar();
+		getchar(); getchar();
 		LoginUI();
 	}
 }
@@ -168,16 +173,28 @@ void UI::CreatMemberUI()
 {
 
 	D *p = new D;
+	system("Cls");
+
 	cout << "********************" << endl;
 	cout << "请输入新姓名：" << endl;
 	cin >> p->name;
 	cout << "请设置密码" << endl;
 	cin >> p->password;
-	p->id = LOGT.MemberCount();
-	p->IsUsed = true;
-	p->credit = 0;
-	manager.CreateMember(p);
-
+	cout << "确认信息" << endl;
+	if (IsYes() == true) {
+		p->id = LOGT.MemberCount() + MemberStartNumber;
+		p->IsUsed = true;
+		p->credit = 0;
+		manager.CreateMember(p);
+		system("Cls");
+		cout << "****************" << endl;
+		cout << "新用户ID：" << p->id << endl;
+		cout << "用户姓名：" << p->name << endl;
+		cout << "密码：" << p->password << endl;
+		cout << "*******************" << endl;
+		cout << "按回车返回界面" << endl;
+		getchar(); getchar();
+	}
 }
 
 void UI::CreatManagerUI()
@@ -188,7 +205,7 @@ void UI::CreatManagerUI()
 	cin >> p->name;
 	cout << "请设置密码" << endl;
 	cin >> p->password;
-	p->id = LOGT.ManagerCout();
+	p->id = LOGT.ManagerCout() + ManagerStartNumber;
 	p->IsUsed = true;
 	p->credit = 0;
 	CreateManager(p);
@@ -196,15 +213,25 @@ void UI::CreatManagerUI()
 
 void UI::ShowAllCount()
 {
-	Member *mb=new Member();
+	Member *mb = new Member();
 	for (int i = 0; i < LOGT.L.NMember; i++) {
 		mb->Read(MemberStartNumber + i);
-		cout << mb->getid() << mb->getname() ;//输出用户信息
+		cout << "用户ID：" << mb->getid() << endl;
+		cout << "用户姓名：" << mb->getname() << endl;//输出用户信息
+
 	}
+	cout << "会员显示完毕" << endl;
+	getchar(); getchar();
 	delete mb;
 	Manager *mg = new Manager();
 	for (int i = 0; i < LOGT.L.NManager; i++) {
 		mg->Read(ManagerStartNumber + i);
-		cout << mg->getid() << mg->getname() ;//输出用户信息
+		cout << "管理员ID：" << mg->getid() << endl;
+		cout << "管理员姓名：" << mg->getname() << endl;//输出用户信息
+		//
+		cout << mg->getpass() << endl;
+		//
 	}
+	cout << "管理员显示完毕" << endl;
+	getchar(); getchar();
 }
