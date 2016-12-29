@@ -5,8 +5,8 @@ class FileSys
 public:
 	FileSys();
 	~FileSys();
-	virtual void read(int ID) = 0;
-	virtual void write() = 0;
+	virtual void Read(int ID) = 0;
+	virtual void Write() = 0;
 
 //	virtual void check() = 0;
 };

@@ -4,12 +4,14 @@
 using namespace std;
 UI::UI()
 {
-	LOGT.read_log();
+	LOGT.Read_log();
+	
 }
 
 void UI::LoginUI()
 {
 	int id, pw;
+	D *d=NULL;
 	//	int tp, cls;
 	Clean();
 	cout << "欢迎使用会员登录系统" << endl;
@@ -18,27 +20,43 @@ void UI::LoginUI()
 	{
 		cout << "请输入用户ID:" << endl;
 		cin >> id;
-		if (Operator::Certid(id) == true) break;  //如果存在就跳出循环
+		if (Operator::Certid(id)) break;  //如果存在就跳出循环
 		cout << "用户名，请重新输入" << endl;
 		getchar();
-	} while (Operator::Certid(id) == false);//certid()是布尔型 返回true就说明存在
-
+	} while (!Operator::Certid(id));//certid()是布尔型 返回true就说明存在
+	if (id > MemberStartNumber) {
+		Member *mb_p = new Member();
+		mb_p->Read(id);
+		d = mb_p->getdata();
+	}
+	else if (id > ManagerStartNumber) {
+		Manager *mg_p = new Manager();
+		mg_p->Read(id);
+		d = mg_p->getdata();
+	}
+	else if (SuperID == id) {
+		d = new D();
+		strcpy_s(d->name, SuperName);
+		d->id = SuperID;
+		d->password = SuperPass;
+	}
+	
 	do //判断密码是否正确
 	{
 		cout << "请输入密码:" << endl;
 		cin >> pw;
-		if (Operator::Certid(id) == true) break;  //如果存在就跳出循环
+		if (Operator::Certpw(Person(d),pw) == true) break;  //如果存在就跳出循环
 		cout << "密码错误，请重新输入" << endl;
 		getchar();
-	} while (Operator::Certid(id) == false);//certpw()是布尔型 返回true就说明存在
-	if (id > 100000) {
+	} while (Operator::Certpw(Person(d),pw) == false);//certpw()是布尔型 返回true就说明存在
+	if (id > MemberStartNumber) {
 		MemberUI(id);
 	}
-	else if (id < 1000) {
-		SuperUI(id);
-	}
-	else {
+	else if (id > ManagerStartNumber) {
 		ManagerUI(id);
+	}
+	else if(SuperPass==pw){
+		SuperUI(id);
 	}
 }
 
@@ -158,42 +176,35 @@ void UI::CreatMemberUI()
 	p->id = LOGT.MemberCount();
 	p->IsUsed = true;
 	p->credit = 0;
-	manager.createmamber(p);
+	manager.CreateMember(p);
 
+}
+
+void UI::CreatManagerUI()
+{
+	D *p = new D;
+	cout << "********************" << endl;
+	cout << "请输入新姓名：" << endl;
+	cin >> p->name;
+	cout << "请设置密码" << endl;
+	cin >> p->password;
+	p->id = LOGT.ManagerCout();
+	p->IsUsed = true;
+	p->credit = 0;
+	CreateManager(p);
 }
 
 void UI::ShowAllCount()
 {
-	Member *m=new Member();
+	Member *mb=new Member();
 	for (int i = 0; i < LOGT.L.NMember; i++) {
-		m->read(MemberStartNumber + i);
-		cout << "*****************" << endl;
-		cout << "会员ID：" << m->getid() << endl;
-		cout << "姓名：" << m->getname() << endl;
-		cout << "会员积分"<< m->getcredit;//输出用户信息
-		cout << "账户状态";
-		if (m->isued == true) {
-			cout << "正常" << endl;
-		}
-		else if (m->isued == false) {
-			cout << "禁用" << endl;
-		}
-		cout << "*****************" << endl;
+		mb->Read(MemberStartNumber + i);
+		cout << mb->getid() << mb->getname() ;//输出用户信息
 	}
-	delete m;
-	Manager *m = new Manager();
+	delete mb;
+	Manager *mg = new Manager();
 	for (int i = 0; i < LOGT.L.NManager; i++) {
-		m->read(ManagerStartNumber + i);
-		cout << "*****************" << endl;
-		cout << "管理员ID：" << m->getid() << endl;
-		cout << "姓名：" << m->getname() << endl;
-		cout << "账户状态";
-		if (m->isued == true) {
-			cout << "正常" << endl;
-		}
-		else if (m->isued == false) {
-			cout << "禁用" << endl;
-		}
-		cout << "*****************" << endl;
+		mg->Read(ManagerStartNumber + i);
+		cout << mg->getid() << mg->getname() ;//输出用户信息
 	}
 }

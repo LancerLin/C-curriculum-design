@@ -8,7 +8,7 @@ Manager::Manager(Person & p):Person(p)
 {
 }
 
-void Manager::read(int ID)
+void Manager::Read(int ID)
 {
 	std::fstream inFile;
 	inFile.open(managerpath, std::ios::in | std::ios::out | std::ios::binary);
@@ -17,7 +17,7 @@ void Manager::read(int ID)
 	inFile.close();
 }
 
-void Manager::write()
+void Manager::Write()
 {
 	std::fstream outFile;
 	outFile.open(managerpath, std::ios::in | std::ios::out | std::ios::binary);
@@ -26,8 +26,8 @@ void Manager::write()
 	outFile.close();
 }
 
-void Manager::createmamber(D *d)
+void Manager::CreateMember(D *d)
 {
 	Member *p = new Member(Person(d));
-	write();
+	p->Member::Write();
 }

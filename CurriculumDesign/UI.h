@@ -10,8 +10,9 @@
 #include "Person.h"
 #include "Member.h"
 #include "Manager.h"
-#include"Operator.h"
-#include"Log.h"
+#include "Super.h"
+#include "Operator.h"
+#include "Log.h"
 class UI:virtual public Operator
 {
 public:
@@ -19,6 +20,7 @@ public:
 	Log LOGT;
 	Member member;
 	Manager manager;
+	Super admin;
 	void LoginUI();  //登陆界面
 	void Clean();    //清理屏幕
 	void MemberUI(const int inputid); //会员登陆界面
@@ -26,7 +28,7 @@ public:
 	void SuperUI(const int inputid);  //脏界面
 	void Logout();					  //注销登录
 	void CreatMemberUI();  //返回D类型用于文件操作
-	//D * CreatManagerUI();
+	void CreatManagerUI();
 	void ShowAllCount();
 private:
 

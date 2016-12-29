@@ -8,8 +8,8 @@ class Manager :virtual public Person,virtual public Member,virtual public FileSy
 public:
 	Manager();
 	Manager(Person &p);
-	void read(int ID);
-	void write();
-	void createmamber(D* d);
+	void Read(int ID);
+	void Write();
+	void CreateMember(D* d);
 	
 };

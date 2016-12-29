@@ -1,45 +1,30 @@
 #include <iostream>
 using namespace std;
-#include"Person.h"
+#include "UI.h"
 
-#include"Member.h"
-#include"Operator.h"
-#include"Log.h"
-
+#include "Operator.h"
+#include"baseinfo.h"
 int main() {
-	Log LOGT;
+	D *d=new D;
+	d->id = ManagerStartNumber;
+	strcpy_s(d->name, "guanli_1");
+	d->IsUsed = true;
+	d->password = 11;
+	d->credit = 0;
 
-	cout << sizeof(D)<<endl;
-	cout << "person show" << endl;
-	Person p1("zhang", 10000000, 1, 1),
-		p2("li",10000001,2,2),
-		p3("chen",10000002,3,3);
-	p1.show();
-	p2.show();
-	p3.show();
-	cout <<"member show" <<endl;
-	Member m1(p1),m2(p2),m3(p3);
-	m1.show();
-	m2.show();
-	m3.show();
+	D *d1 = new D;
+	d1->id = MemberStartNumber;
+	strcpy_s(d1->name, "member_1");
+	d1->IsUsed = true;
+	d1->password = 1;
+	d1->credit = 0;
 
-	cout << "filesys write member" << endl;
-
-	m1.write();
-	m2.write();
-	m3.write();
-	cout << "filesys read member" << endl;
-
-	m1.read(10000002);
-	m1.show();
-
-	cout << "=======" << endl;
+	Manager *p=new Manager();
+	p->CreateMember(d1);
 	Operator o;
-	if (o.Certpw(m1,3)) 
-		cout << "y"<<endl;
-	else 
-		cout << "N"<<endl;
-
+	o.CreateManager(d);
+	//UI u;
+	//u.LoginUI();
 	system("pause");
 	return 0;
 }
