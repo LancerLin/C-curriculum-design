@@ -6,6 +6,7 @@ public:
 	~FileSys();
 	virtual void read(int ID) = 0;
 	virtual void write() = 0;
+
 //	virtual void check() = 0;
 };
 

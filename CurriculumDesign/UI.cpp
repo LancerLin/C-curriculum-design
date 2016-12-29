@@ -157,10 +157,10 @@ void UI::Checkinfo()
 		Member *m = new Member();  //下面两句用于获取id的位置以便输出
 		m->read(inputid);
 		cout << "*******************" << endl;
-		cout << "用户姓名：" << m->getname << endl;
-		cout << "用户ID：" << m->getid << endl;
-		cout << "用户积分：" << m->getcredit << endl;
-		cout << "使用情况：" << m->isued << endl;
+		cout << "用户姓名：" << m->getname() << endl;
+		cout << "用户ID：" << m->getid() << endl;
+		cout << "用户积分：" << m->getcredit() << endl;
+		cout << "使用情况：" << m->isued() << endl;
 		cout << "*******************" << endl;
 	}
 }
@@ -170,10 +170,10 @@ void UI::Checkinfo(int inputid)
 	Member *m = new Member();  //下面两句用于获取id的位置以便输出
 	m->read(inputid);
 	cout << "*******************" << endl;
-	cout << "用户姓名：" << m->getname << endl;
-	cout << "用户ID：" << m->getid << endl;
-	cout << "用户积分：" << m->getcredit << endl;
-	cout << "使用情况：" << m->isued << endl;
+	cout << "用户姓名：" << m->getname() << endl;
+	cout << "用户ID：" << m->getid() << endl;
+	cout << "用户积分：" << m->getcredit() << endl;
+	cout << "使用情况：" << m->isued() << endl;
 	cout << "*******************" << endl;
 
 }

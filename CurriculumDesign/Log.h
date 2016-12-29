@@ -1,12 +1,13 @@
 #pragma once
 #include "FileSys.h"
+#include <fstream>
 /*
 日志全局基本信息
 基本面：
 number of member
 number of manager
 操作信息列表：
-增/删/改+ID
+ID + 增/删/改 + 名/密码/信用
 （此部分最多）
 
 拓展功能对member信息检索
@@ -15,7 +16,7 @@ number of manager
 enum conduct_ {
 	add,
 	edit,
-	del
+	cancle
 };
 enum _conduct {
 	name,
@@ -29,16 +30,21 @@ typedef struct LIST {
 	LIST *next;
 }List;
 typedef struct LOGtable {
-	int noMember;//number of Member
-	int noManager;//number of Manager
-	List l;
+	int NMember;//number of Member
+	int NManager;//number of Manager
+	List list;
+	int listlength;
 }LOG;
-class Log:public FileSys
+class Log//:virtual public FileSys
 {
-private:
-	LOG L;
 public:
+	LOG L;
 	Log();
 	~Log();
+	void MemberCount();//Member计数
+	void ManagerCout();//Manager计数
+	void read_log();//log全读
+	void write_log();//log全写 P.S.日志条目追加 暂未启用
+	void creatlist();//P.S.日志条目 暂不启用
 };
 

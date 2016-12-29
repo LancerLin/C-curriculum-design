@@ -8,6 +8,8 @@ FileSys::FileSys()
 FileSys::~FileSys()
 {
 }
+
+
 //member根据ID读取文件信息
 //P.S.会覆盖内存完整信息
 /*

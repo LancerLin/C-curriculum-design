@@ -1,0 +1,4 @@
+number of member
+3
+number of manager
+1

@@ -4,7 +4,10 @@ using namespace std;
 
 #include"Member.h"
 #include"Operator.h"
+#include"Log.h"
 int main() {
+	Log LOGT;
+
 	cout << sizeof(D)<<endl;
 	cout << "person show" << endl;
 	Person p1("zhang", 10000000, 1, 1),
@@ -32,9 +35,9 @@ int main() {
 	cout << "=======" << endl;
 	Operator o;
 	if (o.certpw(m1,3)) 
-		cout << "y";
+		cout << "y"<<endl;
 	else 
-		cout << "N";
+		cout << "N"<<endl;
 
 	system("pause");
 	return 0;

@@ -9,7 +9,7 @@
 #include <stdlib.h>
 #include "Person.h"
 #include"Operator.h"
-class UI:public Operator
+class UI:virtual public Operator
 {
 public:
 	UI();
