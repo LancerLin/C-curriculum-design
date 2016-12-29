@@ -77,7 +77,7 @@ void Operator::Checkinfo()
 
 void Operator::Checkinfo(int inputid)
 {
-	Member *m = new Member();  //下面两句用于获取id的位置以便输出
+	Member *m = new Member();  
 	m->read(inputid);
 	cout << "*******************" << endl;
 	cout << "用户姓名：" << m->getname() << endl;

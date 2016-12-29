@@ -167,12 +167,33 @@ void UI::ShowAllCount()
 	Member *m=new Member();
 	for (int i = 0; i < LOGT.L.NMember; i++) {
 		m->read(MemberStartNumber + i);
-		cout << m->getid() << m->getname() << m->isued;//输出用户信息
+		cout << "*****************" << endl;
+		cout << "会员ID：" << m->getid() << endl;
+		cout << "姓名：" << m->getname() << endl;
+		cout << "会员积分"<< m->getcredit;//输出用户信息
+		cout << "账户状态";
+		if (m->isued == true) {
+			cout << "正常" << endl;
+		}
+		else if (m->isued == false) {
+			cout << "禁用" << endl;
+		}
+		cout << "*****************" << endl;
 	}
 	delete m;
 	Manager *m = new Manager();
 	for (int i = 0; i < LOGT.L.NManager; i++) {
 		m->read(ManagerStartNumber + i);
-		cout << m->getid() << m->getname() << m->isued;//输出用户信息
+		cout << "*****************" << endl;
+		cout << "管理员ID：" << m->getid() << endl;
+		cout << "姓名：" << m->getname() << endl;
+		cout << "账户状态";
+		if (m->isued == true) {
+			cout << "正常" << endl;
+		}
+		else if (m->isued == false) {
+			cout << "禁用" << endl;
+		}
+		cout << "*****************" << endl;
 	}
 }
