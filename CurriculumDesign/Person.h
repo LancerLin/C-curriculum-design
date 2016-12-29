@@ -13,7 +13,7 @@ class Person{
 private:
 	D data;
 public:
-	Person(char *inputname, int inputid, int inputpassword, int inputcredit);
+	Person(char *inputname, int inputid, int inputpassword, int inputcredit=0);
 	Person();
 	Person(D *d);
 	Person(Person &p);

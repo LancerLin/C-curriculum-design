@@ -1,6 +1,4 @@
 #include "Super.h"
-#include"Operator.h"
-Super::Super()
+Super::Super():Person(SuperName,SuperID,SuperPass)
 {
-//	Super::Person("admin",100,66666);
 }

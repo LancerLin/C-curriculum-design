@@ -11,7 +11,7 @@ public:
 	Member();
 //	Member(D &d);
 	Member(Person &p);
-	void read(int ID);
-	void write();
+	void Read(int ID);
+	void Write();
 //	void createMember(); 不是我的功能
 };

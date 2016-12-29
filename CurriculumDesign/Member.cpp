@@ -6,7 +6,7 @@ Member::Member():Person(){
 Member::Member(Person &p):Person(p) {
 }
 
-void Member::read(int ID)
+void Member::Read(int ID)
 {
 	std::fstream inFile;
 	inFile.open(memberpath, std::ios::in | std::ios::out | std::ios::binary);
@@ -15,7 +15,7 @@ void Member::read(int ID)
 	inFile.close();
 }
 
-void Member::write()
+void Member::Write()
 {
 	std::fstream outFile;
 	outFile.open(memberpath, std::ios::in | std::ios::out | std::ios::binary);

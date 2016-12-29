@@ -2,6 +2,8 @@
 
 Log::Log()
 {
+	L.NManager = 0;
+	L.NMember = 0;
 }
 
 Log::~Log()
@@ -11,18 +13,18 @@ Log::~Log()
 int Log::MemberCount()
 {
 	L.NMember++;
-	write_log();
+	Write_log();
 	return L.NMember;
 }
 
 int Log::ManagerCout()
 {
 	L.NManager++;
-	write_log();
+	Write_log();
 	return L.NManager;
 }
 
-void Log::read_log()
+void Log::Read_log()
 {
 	char buff[255];
 	int A, B;
@@ -56,7 +58,7 @@ void Log::read_log()
 	fin.close();
 }
 
-void Log::write_log()
+void Log::Write_log()
 {
 	//char buff[20];
 	List *p =&L.list;
@@ -76,6 +78,6 @@ void Log::write_log()
 	fout.close();
 }
 
-void Log::creatlist()
+void Log::Creatlist()
 {
 }

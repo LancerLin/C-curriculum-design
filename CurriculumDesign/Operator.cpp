@@ -10,14 +10,18 @@ void Operator::CreateMember(char *inputname, int inputid, int inputpassword)
 }
 */
 
-void Operator::CreateManager(char * inputname, int inputid, int inputpassword)
+
+void Operator::CreateManager(D * d)
 {
-	//Manager::Manager(inputname, inputid, inputpassword);
-	//文件操作:会员数量++
+	Manager *p = new Manager(Person(d));
+	p->Manager::Write();
 }
 
 bool Operator::Certid(int inputid)
 {
+	if (SuperID == inputid) {
+		return true;
+	}
 	Person *_p = new Person();
 	char filename[20] = { 0 };
 	if (inputid >= MemberStartNumber) {
@@ -36,6 +40,9 @@ bool Operator::Certid(int inputid)
 
 bool Operator::Certpw(Person &p, int inputpw)
 {
+	if (p.getpass() == inputpw) {
+		return true;
+	}
 	Person *_p = new Person();
 	char filename[20] = { 0 };
 	if (p.getid() >= MemberStartNumber) {
@@ -65,7 +72,7 @@ void Operator::Checkinfo()
 	}
 	else if (Operator::Certid(inputid) == true) {
 		Member *m = new Member();  //下面两句用于获取id的位置以便输出
-		m->read(inputid);
+		m->Read(inputid);
 		cout << "*******************" << endl;
 		cout << "用户姓名：" << m->getname() << endl;
 		cout << "用户ID：" << m->getid() << endl;
@@ -78,7 +85,7 @@ void Operator::Checkinfo()
 void Operator::Checkinfo(int inputid)
 {
 	Member *m = new Member();  //下面两句用于获取id的位置以便输出
-	m->read(inputid);
+	m->Read(inputid);
 	cout << "*******************" << endl;
 	cout << "用户姓名：" << m->getname() << endl;
 	cout << "用户ID：" << m->getid() << endl;
@@ -102,7 +109,7 @@ void Operator::ChangePw()
 	}
 	else if (Operator::Certid(inputid) == true) {
 		Member *m = new Member();
-		m->read(inputid);
+		m->Read(inputid);
 		cout << "*****************" << endl;
 		cout << "请输入新密码:";
 		cin >> NewPw;
@@ -126,7 +133,7 @@ void Operator::ChangePw(int inputid)
 {
 	int NewPw, tp;
 	Member *m = new Member();
-	m->read(inputid);
+	m->Read(inputid);
 	cout << "*****************" << endl;
 	cout << "请输入新密码:";
 	cin >> NewPw;
@@ -156,19 +163,19 @@ void Operator::ChangeIsused()
 	}
 	else if (Operator::Certid(inputid) == true) {
 		Member *m = new Member();
-		m->read(inputid);
+		m->Read(inputid);
 		cout << "用户ID为：" << m->getid() << endl;
 		cout << "账户当前状态为" ;
-		if (m->isued == true) {
+		if (m->isued() == true) {
 			cout << "正常" << endl;
 		}
-		else if (m->isued == false) {
+		else if (m->isued() == false) {
 			cout << "禁用" << endl;
 		}
 		cout << "是否要修改用户状态" << endl;
 		if (IsYes() == true) {
 			Member *m = new Member();
-			m->read(inputid);
+			m->Read(inputid);
 			D *d = new D();
 			d->credit = m->getcredit();
 			d->id = !m->getid();
@@ -176,14 +183,14 @@ void Operator::ChangeIsused()
 			d->password = m->getpass();
 			delete m;
 			m = new Member(Person(d));
-			m->write();
+			m->Write();
 			cout << "****************" << endl;
 			cout << "用户ID:" << m->getid() << endl;
 			cout << "账户当前状态为";
-			if (m->isued == true) {
+			if (m->isued() == true) {
 				cout << "正常" << endl;
 			}
-			else if (m->isued == false) {
+			else if (m->isued() == false) {
 				cout << "禁用" << endl;
 			}
 			cout << "*******************" << endl;
@@ -211,7 +218,7 @@ void Operator::ChangeCredit()
 		if (IsYes() == true) {
 
 			Member *m = new Member();
-			m->read(inputid);
+			m->Read(inputid);
 			D *d = new D();
 			d->credit = credit;
 			d->id = m->getid();
@@ -219,7 +226,7 @@ void Operator::ChangeCredit()
 			d->password = m->getpass();
 			delete m;
 			m = new Member(Person(d));
-			m->write();
+			m->Write();
 			cout << "****************" << endl;
 			cout << "用户ID:" << m->getid() << endl;
 			cout << "用户积分:" << m->getcredit() << endl;
