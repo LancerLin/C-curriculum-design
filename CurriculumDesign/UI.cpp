@@ -52,80 +52,83 @@ void UI::MemberUI(const int inputid)   //传入当前id 用作限制当前操作
 {
 
 	int fg;
-	Clean();
-	cout << "****************************" << endl;
-	cout << "*     欢迎进入会员界面      *" << endl;
-	cout << "*   1.查询个人信息         *" << endl;
-	cout << "*   3.查询账户操作          *" << endl;
-	cout << "*   4.修改密码             *" << endl;
-	cout << "*   5.注销登陆             *" << endl;
-	cout << "***************************" << endl;
-	cout << "请输入序号进行操作：" << endl;
-	//下面是操作内容，待补全
-	cin >> fg;
-	switch (fg)
-	{
-	case 1:Checkinfo(inputid);
-	case 2://log op
-	case 3:
-	case 4:
-	case 5: Logout(); break;
-	default:
-		break;
+	while (1) {
+
+		Clean();
+		cout << "****************************" << endl;
+		cout << "*     欢迎进入会员界面      *" << endl;
+		cout << "*   1.查询个人信息         *" << endl;
+		cout << "*   2.查询账户操作          *" << endl;
+		cout << "*   3.修改密码             *" << endl;
+		cout << "*   4.注销登陆             *" << endl;
+		cout << "***************************" << endl;
+		cout << "请输入序号进行操作：" << endl;
+		//下面是操作内容，待补全
+		cin >> fg;
+		switch (fg)
+		{
+		case 1:Checkinfo(inputid); continue;
+		case 2:continue;//log op
+		case 3:ChangePw(inputid); continue;
+		case 4:Logout(); break; continue;
+		}
 	}
 }
 
 void UI::ManagerUI(const int inputid)
 {
 	int fg;
-	Clean();
-	cout << "****************************" << endl;
-	cout << "*     欢迎进入经理界面      *" << endl;
-	cout << "*   1.查询会员信息          *" << endl;
-	cout << "*   2.新会员注册            *" << endl;
-	cout << "*   3.充值会员积分          *" << endl;
-	cout << "*   4.注销登陆             *" << endl;
-	cout << "***************************" << endl;
-	cout << "请输入序号进行操作：" << endl;
-	//下面是操作内容，待补全
-	cin >> fg;
-	switch (fg)
+	while (1)
 	{
-	case 1:
-	case 2:
-	case 3:
-	case 4:Logout(); break;
-	default:
-		break;
+		Clean();
+		cout << "****************************" << endl;
+		cout << "*     欢迎进入经理界面      *" << endl;
+		cout << "*   1.查询会员信息          *" << endl;
+		cout << "*   2.新会员注册            *" << endl;
+		cout << "*   3.会员积分修改          *" << endl;
+		cout << "*   4.注销登陆             *" << endl;
+		cout << "***************************" << endl;
+		cout << "请输入序号进行操作：" << endl;
+		//下面是操作内容，待补全
+		cin >> fg;
+		switch (fg)
+		{
+		case 1:Checkinfo(); continue;
+		case 2:CreatMemberUI(); continue;
+		case 3:ChangeCredit(); continue;
+		case 4:Logout(); continue;
+		}
 	}
 }
 
 void UI::SuperUI(const int inputid)
 {
 	int fg;
-	Clean();
-	cout << "****************************" << endl;
-	cout << "*     欢迎进入超级经理界面   *" << endl;
-	cout << "*   1.查询账户信息          *" << endl;
-	cout << "*   2.新会员注册            *" << endl;
-	cout << "*   3.注销 恢复账户          *" << endl;
-	cout << "*   4.会员积分操作          *" << endl;
-	cout << "*   5.导出所有账户信息       *" << endl;
-	cout << "*   6.注销登陆              *" << endl;
-	cout << "***************************" << endl;
-	cout << "请输入序号进行操作：" << endl;
-	//下面是操作内容，待补全
-	cin >> fg;
-	switch (fg)
+	while (1)
 	{
-	case 1:Checkinfo();
-	case 2:
-	case 3:
-	case 4:
-	case 5:
-	case 6: Logout(); break;
-	default:
-		break;
+
+		Clean();
+		cout << "****************************" << endl;
+		cout << "*     欢迎进入超级经理界面   *" << endl;
+		cout << "*   1.查询账户信息          *" << endl;
+		cout << "*   2.新会员注册            *" << endl;
+		cout << "*   3.查询账户状态          *" << endl;
+		cout << "*   4.会员积分修改          *" << endl;
+		cout << "*   5.显示用户数量          *" << endl;
+		cout << "*   6.注销登陆              *" << endl;
+		cout << "***************************" << endl;
+		cout << "请输入序号进行操作：" << endl;
+		//下面是操作内容，待补全
+		cin >> fg;
+		switch (fg)
+		{
+		case 1:Checkinfo(); continue;
+		case 2:CreatMemberUI();continue;
+		case 3:ChangeIsused(); continue;
+		case 4:ChangeCredit(); continue;
+		case 5:ShowAllCount(); continue;
+		case 6:Logout(); continue;
+		}
 	}
 }
 
@@ -157,4 +160,19 @@ void UI::CreatMemberUI()
 	p->credit = 0;
 	manager.createmamber(p);
 
+}
+
+void UI::ShowAllCount()
+{
+	Member *m=new Member();
+	for (int i = 0; i < LOGT.L.NMember; i++) {
+		m->read(MemberStartNumber + i);
+		cout << m->getid() << m->getname() << m->isued;//输出用户信息
+	}
+	delete m;
+	Manager *m = new Manager();
+	for (int i = 0; i < LOGT.L.NManager; i++) {
+		m->read(ManagerStartNumber + i);
+		cout << m->getid() << m->getname() << m->isued;//输出用户信息
+	}
 }

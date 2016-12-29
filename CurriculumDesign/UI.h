@@ -25,9 +25,9 @@ public:
 	void ManagerUI(const int inputid);//管理员界面
 	void SuperUI(const int inputid);  //脏界面
 	void Logout();					  //注销登录
-	//查询用户信息
 	void CreatMemberUI();  //返回D类型用于文件操作
 	//D * CreatManagerUI();
+	void ShowAllCount();
 private:
 
 };

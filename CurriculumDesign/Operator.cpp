@@ -49,7 +49,7 @@ bool Operator::Certpw(Person &p, int inputpw)
 	inFile.seekg((p.getid() - MemberStartNumber) * sizeof(D), std::ios::beg);
 	inFile.read((char*)_p, sizeof(D));
 	inFile.close();
-	return _p->getpass()==inputpw;
+	return _p->getpass() == inputpw;
 }
 
 void Operator::Checkinfo()
@@ -90,7 +90,7 @@ void Operator::Checkinfo(int inputid)
 
 void Operator::ChangePw()
 {
-	int inputid;
+	int inputid, NewPw, tp;
 	cout << "***************" << endl;
 	cout << "请输入需要修改密码的ID" << endl;
 
@@ -98,10 +98,154 @@ void Operator::ChangePw()
 	if (Operator::Certid(inputid) == false) {
 		cout << "你输入的ID不存在，将返回操作界面" << endl;
 		getchar();
+		return;
 	}
 	else if (Operator::Certid(inputid) == true) {
 		Member *m = new Member();
 		m->read(inputid);
-		cout
+		cout << "*****************" << endl;
+		cout << "请输入新密码:";
+		cin >> NewPw;
+		cout << "请再次输入新密码：";
+		cin >> tp;
+		if (NewPw == tp) {
+			cout << "新密码为" << NewPw << endl;
+			if (IsYes() == true) {
+				m->setpassword(NewPw);
+				cout << "新密码设置成功" << endl;
+				getchar();
+				return;
+			}
+		}
+
+
 	}
+}
+
+void Operator::ChangePw(int inputid)
+{
+	int NewPw, tp;
+	Member *m = new Member();
+	m->read(inputid);
+	cout << "*****************" << endl;
+	cout << "请输入新密码:";
+	cin >> NewPw;
+	cout << "请再次输入新密码：";
+	cin >> tp;
+	if (NewPw == tp) {
+		cout << "新密码为" << NewPw << endl;
+		if (IsYes() == true) {
+			m->setpassword(NewPw);
+			cout << "新密码设置成功" << endl;
+			getchar();
+			return;
+		}
+	}
+}
+
+void Operator::ChangeIsused()
+{
+	int inputid;
+	cout << "***************" << endl;
+	cout << "请输入需要查询的用户状态" << endl;
+	cin >> inputid;
+	if (Operator::Certid(inputid) == false) {
+		cout << "你输入的ID不存在，将返回操作界面" << endl;
+		getchar();
+		return;
+	}
+	else if (Operator::Certid(inputid) == true) {
+		Member *m = new Member();
+		m->read(inputid);
+		cout << "用户ID为：" << m->getid() << endl;
+		cout << "账户当前状态为" ;
+		if (m->isued == true) {
+			cout << "正常" << endl;
+		}
+		else if (m->isued == false) {
+			cout << "禁用" << endl;
+		}
+		cout << "是否要修改用户状态" << endl;
+		if (IsYes() == true) {
+			Member *m = new Member();
+			m->read(inputid);
+			D *d = new D();
+			d->credit = m->getcredit();
+			d->id = !m->getid();
+			d->IsUsed =  m->isued();
+			d->password = m->getpass();
+			delete m;
+			m = new Member(Person(d));
+			m->write();
+			cout << "****************" << endl;
+			cout << "用户ID:" << m->getid() << endl;
+			cout << "账户当前状态为";
+			if (m->isued == true) {
+				cout << "正常" << endl;
+			}
+			else if (m->isued == false) {
+				cout << "禁用" << endl;
+			}
+			cout << "*******************" << endl;
+		}
+		getchar();
+		return;
+	}
+}
+
+void Operator::ChangeCredit()
+{
+	int inputid, credit;
+	cout << "***************" << endl;
+	cout << "请输入需要修改密码的ID" << endl;
+
+	cin >> inputid;
+	if (Operator::Certid(inputid) == false) {
+		cout << "你输入的ID不存在，将返回操作界面" << endl;
+		getchar();
+		return;
+	}
+	else if (Operator::Certid(inputid) == true) {
+		cout << "请输入要增加的积分" << endl;
+		cin >> credit;
+		if (IsYes() == true) {
+
+			Member *m = new Member();
+			m->read(inputid);
+			D *d = new D();
+			d->credit = credit;
+			d->id = m->getid();
+			d->IsUsed = m->isued();
+			d->password = m->getpass();
+			delete m;
+			m = new Member(Person(d));
+			m->write();
+			cout << "****************" << endl;
+			cout << "用户ID:" << m->getid() << endl;
+			cout << "用户积分:" << m->getcredit() << endl;
+			cout << "*******************" << endl;
+		}
+			return;
+	}
+
+}
+
+bool Operator::IsYes()
+{
+	char fg;
+	cout << "******************" << endl;
+	cout << "是否确定（y/n）?" << endl;
+
+	cin >> fg;
+	switch (fg)
+	{
+	case 'y':return true; break;
+	case'n':return false; break;
+	default:
+		cout << "ERROR" << endl;
+		getchar();
+		return IsYes();
+		break;
+	}
+
 }

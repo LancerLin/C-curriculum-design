@@ -23,7 +23,7 @@ public:
 	int getcredit() { return data.credit; }
 	char *getname() { return data.name; }
 	bool isued() { return data.IsUsed; }
-//	friend void setpassword(int x) { password = x; }
+	void setpassword(int x) { data.password = x; }
 	void show();//显示姓名和id和credit
 //	friend class Operator;
 };

@@ -5,6 +5,7 @@ using namespace std;
 #include"Member.h"
 #include"Operator.h"
 #include"Log.h"
+
 int main() {
 	Log LOGT;
 
