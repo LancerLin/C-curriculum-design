@@ -4,6 +4,7 @@
 using namespace std;
 UI::UI()
 {
+	LOGT.read_log();
 }
 
 void UI::LoginUI()
@@ -177,7 +178,7 @@ void UI::Checkinfo(int inputid)
 	cout << "*******************" << endl;
 
 }
-D* UI::CreatMemberUI()
+void UI::CreatMemberUI()
 {
 
 	D *p = new D;
@@ -186,9 +187,9 @@ D* UI::CreatMemberUI()
 	cin >> p->name;
 	cout << "请设置密码" << endl;
 	cin >> p->password;
-	//	p->id = 0;        获取ID
+	p->id = LOGT.MemberCount();
 	p->IsUsed = true;
 	p->credit = 0;
-	return p;
-	// TODO: 在此处插入 return 语句
+	manager.createmamber(p);
+
 }

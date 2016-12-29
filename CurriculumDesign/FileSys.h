@@ -1,4 +1,5 @@
 #pragma once
+#include "baseinfo.h"
 class FileSys
 {
 public:
