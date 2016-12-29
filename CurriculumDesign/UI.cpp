@@ -143,8 +143,6 @@ void UI::Logout()
 	}
 }
 
-
-}
 void UI::CreatMemberUI()
 {
 

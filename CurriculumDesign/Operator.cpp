@@ -2,11 +2,13 @@
 #include<iostream>
 
 using namespace std;
+/*
 void Operator::CreateMember(char *inputname, int inputid, int inputpassword)
 {
 	//Member::Member(inputname, inputid, inputpassword);
 	//文件操作:会员数量++
 }
+*/
 
 void Operator::CreateManager(char * inputname, int inputid, int inputpassword)
 {
@@ -26,7 +28,7 @@ bool Operator::Certid(int inputid)
 	}
 	std::fstream inFile;
 	inFile.open(filename, std::ios::in | std::ios::out | std::ios::binary);
-	inFile.seekg((inputid - OriginID) * sizeof(D), std::ios::beg);
+	inFile.seekg((inputid - MemberStartNumber) * sizeof(D), std::ios::beg);
 	inFile.read((char*)_p, sizeof(D));
 	inFile.close();
 	return _p->isued();
@@ -44,7 +46,7 @@ bool Operator::Certpw(Person &p, int inputpw)
 	}
 	std::fstream inFile;
 	inFile.open(filename, std::ios::in | std::ios::out | std::ios::binary);
-	inFile.seekg((p.getid() - OriginID) * sizeof(D), std::ios::beg);
+	inFile.seekg((p.getid() - MemberStartNumber) * sizeof(D), std::ios::beg);
 	inFile.read((char*)_p, sizeof(D));
 	inFile.close();
 	return _p->getpass()==inputpw;
