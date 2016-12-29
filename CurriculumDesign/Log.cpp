@@ -8,16 +8,18 @@ Log::~Log()
 {
 }
 
-void Log::MemberCount()
+int Log::MemberCount()
 {
 	L.NMember++;
 	write_log();
+	return L.NMember;
 }
 
-void Log::ManagerCout()
+int Log::ManagerCout()
 {
 	L.NManager++;
 	write_log();
+	return L.NManager;
 }
 
 void Log::read_log()
@@ -32,9 +34,9 @@ void Log::read_log()
 	fin.getline(buff, 100);//"number of manager\n"
 	fin >> L.NManager;
 	fin.getline(buff, 100);//"\n"
-	
-/*读日志条目 暂时不启用
 	fin.getline(buff, 100);//"id + add/edit/cancle + name/password/credit\n"
+/*读日志条目 暂时不启用
+	
 	for (int i = 0; i < L.listlength; i++) {
 		fin >> p->ID >> A >> B;
 		switch (A) {
@@ -63,9 +65,9 @@ void Log::write_log()
 	fout << L.NMember << "\n";
 	fout << "number of manager\n";
 	fout << L.NManager << "\n";
-
-/*写日志条目 暂不启用
 	fout << "id + add/edit/cancle + name/password/credit\n";
+/*写日志条目 暂不启用
+	
 	for (int i = 0; i < L.listlength; i++) {
 		fout << p->ID << p->A << p->B << "\n";
 		p = p->next;

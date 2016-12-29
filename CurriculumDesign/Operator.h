@@ -2,11 +2,10 @@
 #include"Person.h"
 #include"Member.h"
 #include"Manager.h"
-
+#include"baseinfo.h"
 class Operator:virtual public Member,virtual public Manager{
 public:
 	//void setpassword(Person &p, int x) { p.password = x; }
-	void CreateMember(char *inputname, int inputid, int inputpassword);
 	void CreateManager(char *inputname, int inputid, int inputpassword);
 	bool Certid(int inputid);   //判断id或密码存在性 返回ture存在
 	bool Certpw(Person &p,int inputpw);

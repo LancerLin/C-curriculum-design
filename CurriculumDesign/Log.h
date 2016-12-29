@@ -41,8 +41,8 @@ public:
 	LOG L;
 	Log();
 	~Log();
-	void MemberCount();//Member计数
-	void ManagerCout();//Manager计数
+	int MemberCount();//Member计数
+	int ManagerCout();//Manager计数
 	void read_log();//log全读
 	void write_log();//log全写 P.S.日志条目追加 暂未启用
 	void creatlist();//P.S.日志条目 暂不启用

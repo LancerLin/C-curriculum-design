@@ -2,8 +2,7 @@
 #include"Person.h"
 #include"FileSys.h"
 #include <fstream>
-
-const int OriginID = 10000000;
+#include"baseinfo.h"
 //会员等级制度暂且保留
 //会员类 
 class Member :virtual public Person,virtual public FileSys {
