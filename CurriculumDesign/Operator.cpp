@@ -108,7 +108,7 @@ void Operator::Checkinfo(int inputid)
 	getchar(); getchar();
 }
 
-void Operator::ChangePw()
+bool Operator::ChangePw()
 {
 	int inputid, NewPw, tp;
 	cout << "***************" << endl;
@@ -118,7 +118,7 @@ void Operator::ChangePw()
 	if (Operator::Certid(inputid) == false) {
 		cout << "你输入的ID不存在，将返回操作界面" << endl;
 		getchar();
-		return;
+		return false;
 	}
 	else if (Operator::Certid(inputid) == true) {
 		Member *m = new Member();
@@ -134,15 +134,14 @@ void Operator::ChangePw()
 				m->setpassword(NewPw);
 				cout << "新密码设置成功" << endl;
 				getchar();
-				return;
+				return true;
 			}
 		}
-
-
 	}
+	return false;
 }
 
-void Operator::ChangePw(int inputid)
+bool Operator::ChangePw(int inputid)
 {
 	int NewPw, tp;
 	Member *m = new Member();
@@ -160,12 +159,12 @@ void Operator::ChangePw(int inputid)
 			cout << "新密码为" << m->getpass() << endl;
 			m->Write();
 			getchar(); getchar();
-			return;
+			return true;
 		}
 	}
 }
 
-void Operator::ChangeIsused()
+bool Operator::ChangeIsused()
 {
 	int inputid;
 	cout << "***************" << endl;
@@ -174,7 +173,7 @@ void Operator::ChangeIsused()
 	if (Operator::Certid(inputid) == false) {
 		cout << "你输入的ID不存在，将返回操作界面" << endl;
 		getchar();
-		return;
+		return false;
 	}
 	else if (Operator::Certid(inputid) == true) {
 		Member *m = new Member();
@@ -209,13 +208,15 @@ void Operator::ChangeIsused()
 				cout << "禁用" << endl;
 			}
 			cout << "*******************" << endl;
+			getchar();
+			return true;
 		}
-		getchar();
-		return;
+		getchar();	
 	}
+	return false;
 }
 
-void Operator::ChangeCredit()
+bool Operator::ChangeCredit()
 {
 	int inputid, credit;
 	cout << "***************" << endl;
@@ -225,7 +226,7 @@ void Operator::ChangeCredit()
 	if (Operator::Certid(inputid) == false) {
 		cout << "你输入的ID不存在，将返回操作界面" << endl;
 		getchar();
-		return;
+		return false;
 	}
 	else if (Operator::Certid(inputid) == true) {
 		cout << "请输入要增加的积分" << endl;
@@ -246,10 +247,14 @@ void Operator::ChangeCredit()
 			cout << "用户ID:" << m->getid() << endl;
 			cout << "用户积分:" << m->getcredit() << endl;
 			cout << "*******************" << endl;
+			getchar();
+			return true;
 		}
-			return;
+		getchar();
+		return false;
 	}
-
+	getchar();
+	return false;
 }
 
 

@@ -42,9 +42,11 @@ public:
 	Log();
 	~Log();
 	int MemberCount(); //Member计数
-	int ManagerCout();//Manager计数
+	int ManagerCount();//Manager计数
 	void Read_log();//log全读
 	void Write_log();//log全写 P.S.日志条目追加 暂未启用
 	void Creatlist();//P.S.日志条目 暂不启用
+	void CreatConduct_log();
+	void AddConduct(int id,char buff_[],char _buff[]);
 };
 

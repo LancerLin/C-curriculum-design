@@ -17,7 +17,7 @@ int Log::MemberCount()
 	return L.NMember;
 }
 
-int Log::ManagerCout()
+int Log::ManagerCount()
 {
 	L.NManager++;
 	Write_log();
@@ -27,9 +27,9 @@ int Log::ManagerCout()
 void Log::Read_log()
 {
 	char buff[255];
-	int A, B;
+	//int A, B;
 	List *p = &L.list;
-	std::ifstream fin("log.txt");
+	std::ifstream fin(logpath);
 	fin.getline(buff, 100);//"number of member\n"
 	fin >> L.NMember;
 	fin.getline(buff, 100);//"\n"
@@ -61,23 +61,31 @@ void Log::Read_log()
 void Log::Write_log()
 {
 	//char buff[20];
-	List *p =&L.list;
-	std::ofstream fout("log.txt");
+	//List *p =&L.list;
+	std::ofstream fout(logpath);
 	fout << "number of member\n";
 	fout << L.NMember << "\n";
 	fout << "number of manager\n";
 	fout << L.NManager << "\n";
-	fout << "id + add/edit/cancle + name/password/credit\n";
-/*写日志条目 暂不启用
-	
-	for (int i = 0; i < L.listlength; i++) {
-		fout << p->ID << p->A << p->B << "\n";
-		p = p->next;
-	}
-*/
+
 	fout.close();
 }
 
 void Log::Creatlist()
 {
+}
+
+void Log::CreatConduct_log()
+{
+	std::ofstream fout(conduct_logpath);
+	fout << "id + add/edit/cancle + name/password/credit\n";
+	fout.close();
+}
+
+void Log::AddConduct(int id,char buff_[],char _buff[])
+{
+	std::ofstream file;
+	file.open(conduct_logpath, std::ios_base::app);
+	file << id <<" "<< buff_ <<" "<<_buff<< "\n";
+	file.close();
 }

@@ -1,5 +1,5 @@
 number of member
-12
+0
 number of manager
-1
+0
 id + add/edit/cancle + name/password/credit

@@ -11,10 +11,10 @@ public:
 	bool Certpw(Person &p,int inputpw);
 	void Checkinfo();			//查询用户信息
 	void Checkinfo(int inputid);
-	void ChangePw();	//to change the password 
-	void ChangePw(int inputid);
-	void ChangeIsused();  //to log off or recover user
-	void ChangeCredit();
+	bool ChangePw();	//to change the password 
+	bool ChangePw(int inputid);
+	bool ChangeIsused();  //to log off or recover user
+	bool ChangeCredit();
 	//void Pause();  // pause to show screen and return preUI
 	bool IsYes();			//to return yes or no
 private:
