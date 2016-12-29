@@ -3,7 +3,7 @@
 #include"FileSys.h"
 #include <fstream>
 
-const int originID = 10000000;
+const int OriginID = 10000000;
 //会员等级制度暂且保留
 //会员类 
 class Member :virtual public Person,virtual public FileSys {

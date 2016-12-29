@@ -6,9 +6,11 @@
 class Operator:virtual public Member,virtual public Manager{
 public:
 	//void setpassword(Person &p, int x) { p.password = x; }
-	void createMember(char *inputname, int inputid, int inputpassword);
-	void createManager(char *inputname, int inputid, int inputpassword);
-	bool certid(int inputid);   //判断id或密码存在性 返回ture存在
-	bool certpw(Person &p,int inputpw);
-
+	void CreateMember(char *inputname, int inputid, int inputpassword);
+	void CreateManager(char *inputname, int inputid, int inputpassword);
+	bool Certid(int inputid);   //判断id或密码存在性 返回ture存在
+	bool Certpw(Person &p,int inputpw);
+	void Checkinfo();				  //
+	void Checkinfo(int inputid);
+	void ChangePw();				  //to change the password 
 };
